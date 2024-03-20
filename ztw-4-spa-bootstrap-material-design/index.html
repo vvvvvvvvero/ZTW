@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Material Design for Bootstrap</title>
+
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"/>
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+
+    <link rel="stylesheet" href="css/mdb.min.css"/>
+
+    <link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button
+                    data-mdb-collapse-init
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled"
+                        >Disabled</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="intro" class="view">
+        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.6)">
+            <div class="mask rgba-stylish-strong">
+                <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-md-10">
+
+                            <h2 class="display-4 fw-bold text-white pt-5 mb-2">Podróżowanie</h2>
+
+                            <hr class="hr"/>
+
+                            <h4 class="text-white my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Deleniti consequuntu r.</h4>
+                            <button type="button" class="btn btn-outline-light">
+                                Dowiedz się więcej
+                                <i class="fas fa-book ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mt-5">
+    <div class="container">
+        <section id="lastTravels">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <img src="./img/1_img.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="img/2_img.jpeg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="img/3_img.jpeg" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <img src="img/4_img.jpeg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="img/5_img.jpeg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="img/6_img.jpeg" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </section>
+        <hr class="my-5">
+        <section id="gallery">
+        </section>
+        <section id="contact" class="text-center my-5">
+
+            <div class="container">
+
+                <h2 class="h1-responsive font-weight-bold my-5">Skontaktuj się z nami</h2>
+
+                <p class="lead grey-text w-responsive mx-auto mb-5">Masz jakieś pytania? Prosimy o kontakt, a my odpowiemy tak szybko, jak to możliwe.</p>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form class="text-center" style="color: #757575;">
+
+                            <div class="form-floating mb-4">
+                                <input type="text" id="form-name" class="form-control">
+                                <label for="form-name">Imię</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="email" id="form-email" class="form-control">
+                                <label for="form-email">Email</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" id="form-subject" class="form-control">
+                                <label for="form-subject">Temat</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <textarea id="form-message" class="form-control md-textarea" style="height: 100px"></textarea>
+                                <label for="form-message">Twoja wiadomość</label>
+                            </div>
+
+                            <button id="submit-button" class="btn btn-primary btn-md" type="submit">Wyślij</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <section id="google-maps" class="my-5">
+            <div class="container">
+                <h2 class="h1-responsive font-weight-bold text-center my-5">Znajdź nas na mapie</h2>
+                <p class="text-center w-responsive mx-auto mb-5">Odwiedź nasze biuro lub skontaktuj się z nami wirtualnie.</p>
+
+                <!--Google map-->
+                <div id="map-container-google-1" class="z-depth-1-half map-container mb-5" style="height: 500px">17.0529173
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.8396777333!2d17.0529173!3d51.1092394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zYOUR_COORDINATES_LABEL!5e0!3m2!1sen!2sus!4vYOUR_API_KEY"
+                            width="600"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+
+        <hr class="my-5">
+
+        <section id="text-and-image" class="my-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!--Grid column for text-->
+                    <div class="col-md-4">
+                        <h2 class="mb-4">Nasz Zespół</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi eget lorem fermentum facilisis non eu neque. Aliquam erat volutpat.</p>
+                        <!-- Add more text or elements here -->
+                    </div>
+                    <!--Grid column for image-->
+                    <div class="col-md-8">
+                        <img src="img/3_img.jpeg" class="img-fluid" alt="Responsive image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <section id="quote-section" class="text-center my-5 py-4">
+            <div class="container">
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center">
+                    <!--Grid column-->
+                    <div class="col-md-10">
+
+                        <!--Blockquote-->
+                        <blockquote class="blockquote bq-primary">
+                            <p class="bq-title">Inspirujący cytat</p>
+                            <p class="mb-0">„Być może najlepsze, co można na świecie odnaleźć, to poczucie, że się ma za coś misję.”</p>
+                            <footer class="blockquote-footer mb-3">Maria Skłodowska-Curie</footer>
+                        </blockquote>
+
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+        </section>
+
+
+        <hr class="my-5">
+
+        <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
+            <div class="carousel-indicators">
+                <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="card-img-top" alt="Sunset Over the City">
+                        <div class="card-body">
+                            <h5 class="card-title">First slide label</h5>
+                            <p class="card-text">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="card">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="card-img-top" alt="Canyon at Night">
+                        <div class="card-body">
+                            <h5 class="card-title">Second slide label</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="card">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="card-img-top" alt="Cliff Above a Stormy Sea">
+                        <div class="card-body">
+                            <h5 class="card-title">Third slide label</h5>
+                            <p class="card-text">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <hr class="my-5">
+
+
+
+        <section id="faq" class="my-5">
+            <div class="container">
+                <!-- Section heading -->
+                <h2 class="h1-responsive fw-bold text-center my-5">Najczęściej zadawane pytania</h2>
+
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true"
+                               aria-controls="collapseOne">
+                                <h5 class="mb-0">
+                                    Pytanie 1 <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+                             data-parent="#accordionEx">
+                            <div class="card-body">
+                                Odpowiedź na pytanie 1.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Additional accordion cards repeating the structure above for more FAQs -->
+
+                </div>
+                <!--/.Accordion wrapper-->
+
+            </div>
+        </section>
+
+
+        <hr class="my-5">
+
+        <section id="destinations-chart" class="my-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Najpopularniejsze kierunki podróży</h2>
+                <canvas id="myChart"></canvas>
+            </div>
+        </section>
+
+
+    </div>
+</main>
+<footer>
+
+
+
+</footer>
+<script type="text/javascript" src="js/mdb.umd.min.js"></script>
+<script type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>   const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar', // or 'line', 'pie', etc.
+    data: {
+        labels: ['Kierunek 1', 'Kierunek 2', 'Kierunek 3', 'Kierunek 4', 'Kierunek 5'], // Replace with actual destination names
+        datasets: [{
+            label: 'Liczba podróży',
+            data: [12, 19, 3, 5, 2, 3], // Replace with actual data
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+document.getElementById('submit-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevents the form from submitting normally
+    const button = this;
+    button.textContent = 'Sending...'; // Change button text to 'Sending...'
+    button.disabled = true; // Optionally disable the button
+
+    setTimeout(function() {
+        button.textContent = 'Sent!'; // Change the text to 'Sent!' after 2 seconds
+        button.disabled = false; // Optionally re-enable the button
+    }, 2000); // 2 seconds delay
+});
+
+
+
+</script>
+</body>
+</html>
