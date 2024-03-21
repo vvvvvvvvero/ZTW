@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: book-store
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger
+
+server:
+  servlet:
+    context-path: /api
