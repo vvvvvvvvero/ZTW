@@ -91,7 +91,12 @@ header,
 }
 
 
-
+.carousel-inner {
+    position: relative;
+    width: 80%;
+    overflow: hidden;
+    margin: auto;
+}
 .carousel-item .row {
     display: flex;
     flex-wrap: wrap;
@@ -117,7 +122,6 @@ header,
 .card-body .btn {
     margin-top: auto; /* Pushes the button to the bottom of the card */
 }
-
 
 #submit-button {
     transition: all 0.3s ease;
