@@ -22,6 +22,8 @@ const myChart = new Chart(ctx, {
   },
 });
 
+
+
 document
   .getElementById("submit-button")
   .addEventListener("click", function (event) {
