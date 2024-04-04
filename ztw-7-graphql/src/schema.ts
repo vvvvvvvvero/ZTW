@@ -1,4 +1,6 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
+import axios from 'axios';
+
 
 const typeDefs = `
 type ToDoItem {
@@ -23,14 +25,51 @@ type Query {
  user(id: ID!): User
 }
 `
+type User = {
+  id: number;
+  name: string;
+  email: string;
+  login: string;
+};
 
-const usersList = [
+type ToDoItem = {
+  id: number;
+  title: string;
+  completed: boolean;
+  user_id: number;
+};
+
+type ApiResponse = {
+  id: number;
+  name: string;
+  email: string;
+  username: string;
+}[];
+
+async function fetchUsers(): Promise<User[]> {
+  try {
+    const response = await axios.get<ApiResponse>('https://jsonplaceholder.typicode.com/users');
+    console.log(response.data);
+    return response.data.map(({ id, name, email, username }) => ({
+      id,
+      name,
+      email,
+      login: username
+    }));
+  } catch (error) {
+    console.error(error);
+    return []; 
+  }
+}
+
+
+const usersList: User[] = [
   { id: 1, name: "Jan Konieczny", email: "jan.konieczny@wonet.pl", login: "jkonieczny" },
   { id: 2, name: "Anna Wesołowska", email: "anna.w@sad.gov.pl", login: "anna.wesolowska" },
   { id: 3, name: "Piotr Waleczny", email: "piotr.waleczny@gp.pl", login: "p.waleczny" }
 ];
 
-const todosList = [
+const todosList: ToDoItem[] = [
   { id: 1, title: "Naprawić samochód", completed: false, user_id: 3 },
   { id: 2, title: "Posprzątać garaż", completed: true, user_id: 3 },
   { id: 3, title: "Napisać e-mail", completed: false, user_id: 3 },
@@ -49,7 +88,7 @@ function findTodoById(id: number) {
 
 const resolvers = {
   Query: {
-    users: () => usersList,
+    users: async () => fetchUsers(),
     todos: () => todosList,
     user: (parent: any, args: { id: string; }) => findUserById(Number(args.id)),
     todo: (parent: any, args: { id: string; }) => findTodoById(Number(args.id)),
