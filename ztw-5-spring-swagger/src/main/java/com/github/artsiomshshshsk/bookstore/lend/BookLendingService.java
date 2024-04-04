@@ -12,4 +12,6 @@ public interface BookLendingService {
     List<BookLending> getUserLendings(Integer userId);
 
     Lender addLender(CreateBookLenderRequest createBookLenderRequest);
+
+    List<Lender> getLenders();
 }

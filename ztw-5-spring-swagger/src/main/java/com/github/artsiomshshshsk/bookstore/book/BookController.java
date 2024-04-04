@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/books")
 @Tag(name = "Book", description = "Book API")
+@Slf4j
 public record BookController(
         BookService bookService
 ) {
@@ -27,6 +29,7 @@ public record BookController(
     })
     @GetMapping
     public List<Book> getBooks() {
+        log.info("User requested all books");
         return bookService.getBooks();
     }
 
@@ -41,6 +44,7 @@ public record BookController(
     })
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable int id) {
+        log.info("User requested book with id: {}", id);
         return bookService.getBookById(id);
     }
 
@@ -55,6 +59,7 @@ public record BookController(
     })
     @PostMapping
     public Book addBook(@Valid @RequestBody BookController.BookCreateRequest bookCreateRequest) {
+        log.info("User requested to add book: {}", bookCreateRequest);
         return bookService.addBook(bookCreateRequest);
     }
 
@@ -69,6 +74,7 @@ public record BookController(
     })
     @PutMapping("/{id}")
     public Book updateBook(@PathVariable int id, @RequestBody BookUpdateRequest bookUpdateRequest) {
+        log.info("User requested to update book with id: {} to: {}", id, bookUpdateRequest);
         return bookService.updateBook(id, bookUpdateRequest);
     }
 
@@ -82,6 +88,7 @@ public record BookController(
     })
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable int id) {
+        log.info("User requested to delete book with id: {}", id);
         bookService.deleteBook(id);
     }
 

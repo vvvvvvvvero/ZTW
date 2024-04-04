@@ -40,7 +40,9 @@ public class AuthorServiceImpl implements AuthorService{
 
     @Override
     public Author addAuthor(AuthorCreateRequest authorCreateRequest) {
-        return new Author(nextId++, authorCreateRequest.firstName(), authorCreateRequest.lastName());
+        var author = new Author(nextId++, authorCreateRequest.name(), authorCreateRequest.surname());
+        authorRepo.add(author);
+        return author;
     }
 
 
@@ -50,8 +52,8 @@ public class AuthorServiceImpl implements AuthorService{
                 .filter(author -> author.getId() == id)
                 .findFirst()
                 .map(author -> {
-                    Optional.ofNullable(authorUpdateRequest.firstName()).ifPresent(author::setName);
-                    Optional.ofNullable(authorUpdateRequest.lastName()).ifPresent(author::setSurname);
+                    Optional.ofNullable(authorUpdateRequest.name()).ifPresent(author::setName);
+                    Optional.ofNullable(authorUpdateRequest.surname()).ifPresent(author::setSurname);
                     return author;
                 })
                 .orElseThrow(() -> new NotFoundException("Author not found!"));
