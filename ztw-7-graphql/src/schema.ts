@@ -39,16 +39,23 @@ type ToDoItem = {
   user_id: number;
 };
 
-type ApiResponse = {
+type UserApiResponse = {
   id: number;
   name: string;
   email: string;
   username: string;
 }[];
 
+type ToDoApiResponse = {
+  id: number;
+  title: string;
+  completed: boolean;
+  userId: number;
+}[];
+
 async function fetchUsers(): Promise<User[]> {
   try {
-    const response = await axios.get<ApiResponse>('https://jsonplaceholder.typicode.com/users');
+    const response = await axios.get<UserApiResponse>('https://jsonplaceholder.typicode.com/users');
     console.log(response.data);
     return response.data.map(({ id, name, email, username }) => ({
       id,
@@ -59,6 +66,21 @@ async function fetchUsers(): Promise<User[]> {
   } catch (error) {
     console.error(error);
     return []; 
+  }
+}
+
+async function fetchTodos(): Promise<ToDoItem[]> {
+  try {
+    const response = await axios.get<ToDoApiResponse>('https://jsonplaceholder.typicode.com/todos');
+    return response.data.map(({ id, title, completed, userId }) => ({
+      id,
+      title,
+      completed,
+      user_id: userId
+    }));
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 }
 
@@ -78,26 +100,34 @@ const todosList: ToDoItem[] = [
   { id: 6, title: "Zamówic kuriera", completed: false, user_id: 3 },
 ];
 
-function findUserById(id: number) {
-  return usersList.find(user => user.id === id);
+async function findUserById(id: number) {
+  const users = await fetchUsers();
+  return users.find(user => user.id === id);
 }
 
-function findTodoById(id: number) {
-  return todosList.find(todo => todo.id === id);
+async function findTodoById(id: number) {
+  const todos = await fetchTodos();
+  return todos.find(todo => todo.id === id);
 }
 
 const resolvers = {
   Query: {
     users: async () => fetchUsers(),
-    todos: () => todosList,
+    todos: async () => fetchTodos(),
     user: (parent: any, args: { id: string; }) => findUserById(Number(args.id)),
     todo: (parent: any, args: { id: string; }) => findTodoById(Number(args.id)),
   },
   User: {
-    todos: (parent: { id: number; }) => todosList.filter(todo => todo.user_id === parent.id)
+    todos: async (parent: User) => {
+      const todos = await fetchTodos();
+      return todos.filter(todo => todo.user_id === parent.id);
+    }
   },
   ToDoItem: {
-    user: (parent: { user_id: number; }) => usersList.find(user => user.id === parent.user_id)
+    user: async (parent: ToDoItem) => {
+      const users = await fetchUsers();
+      return users.find(user => user.id === parent.user_id);
+    }
   }
 }
 
