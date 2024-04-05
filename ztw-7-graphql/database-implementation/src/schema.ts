@@ -32,6 +32,8 @@ type Mutation {
   createToDoItem(title: String!, userId: ID!): ToDoItem!
   deleteUser(id: ID!): User!
   deleteToDoItem(id: ID!): ToDoItem!
+  updateUser(id: ID!, name: String, email: String, login: String): User!
+  updateToDoItem(id: ID!, title: String, completed: Boolean, userId: ID): ToDoItem!
 }
 `
 
@@ -75,6 +77,32 @@ const resolvers = {
       const toDoItem = await context.prisma.toDoItem.delete({
         where: {
           id: Number(args.id)
+        }
+      })
+      return toDoItem
+    },
+    async updateUser(parent: unknown, args: { id: string, name: string, email: string, login: string, }, context: GraphQLContext) {
+      const user = await context.prisma.user.update({
+        where: {
+          id: Number(args.id)
+        },
+        data: {
+          name: args.name,
+          email: args.email,
+          login: args.login
+        }
+      })
+      return user
+    },
+    async updateToDoItem(parent: unknown, args: { id: string, title: string, completed: boolean, userId: string }, context: GraphQLContext) {
+      const toDoItem = await context.prisma.toDoItem.update({
+        where: {
+          id: Number(args.id)
+        },
+        data: {
+          title: args.title,
+          completed: args.completed,
+          userId: Number(args.userId)
         }
       })
       return toDoItem
