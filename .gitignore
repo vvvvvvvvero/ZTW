@@ -2,3 +2,5 @@
 ./ztw-5-spring-swagger/.gradle
 ./ztw-5-spring-swagger/.idea
 ./ztw-5-spring-swagger/build
+ztw-7-graphql/base-implementation/node_modules
+ztw-7-graphql/database-implementation/node_modules
