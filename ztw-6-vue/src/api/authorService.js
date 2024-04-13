@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '/api/v1/authors'; // Adjust if you have a different base URL
+const API_URL = '/api/v1/authors';
 
 const getAuthors = async () => {
     try {

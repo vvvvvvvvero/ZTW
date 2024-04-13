@@ -8,7 +8,6 @@ export default {
   <nav>
     <router-link to="/authors">Authors</router-link>
     <router-link to="/books">Books</router-link>
-    <router-link to="/landings">Landings</router-link>
   </nav>
 </template>
 
