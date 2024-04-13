@@ -17,7 +17,7 @@ public class BookLendingServiceImpl implements BookLendingService {
 
     private final List<Lender> lenders = new ArrayList<>();
 
-    private final int nextLenderId = 0;
+    private int nextLenderId = 0;
 
 
     public BookLendingServiceImpl(BookServiceImpl bookService) {
@@ -69,8 +69,13 @@ public class BookLendingServiceImpl implements BookLendingService {
 
     @Override
     public Lender addLender(CreateBookLenderRequest request) {
-        var lender = new Lender(nextLenderId, request.name(), request.surname(), request.email());
+        var lender = new Lender(nextLenderId++, request.name(), request.surname(), request.email());
         lenders.add(lender);
         return lender;
+    }
+
+    @Override
+    public List<Lender> getLenders() {
+        return lenders;
     }
 }

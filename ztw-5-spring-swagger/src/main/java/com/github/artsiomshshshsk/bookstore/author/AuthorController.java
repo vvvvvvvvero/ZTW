@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 @RestController
 @Tag(name = "Author", description = "Author API")
 @RequestMapping("/v1/authors")
+@Slf4j
 public record AuthorController (AuthorService authorService) {
 
     @Operation(
@@ -26,6 +29,7 @@ public record AuthorController (AuthorService authorService) {
     })
     @GetMapping
     public List<Author> getAuthors() {
+        log.info("User requested all authors");
         return authorService.getAuthors();
     }
 
@@ -40,6 +44,7 @@ public record AuthorController (AuthorService authorService) {
     })
     @GetMapping("/{id}")
     public Author getAuthorById(@PathVariable int id) {
+        log.info("User requested author with id: {}", id);
         return authorService.getAuthorById(id);
     }
 
@@ -54,6 +59,7 @@ public record AuthorController (AuthorService authorService) {
     })
     @PostMapping
     public Author addAuthor(@Valid @RequestBody AuthorCreateRequest authorCreateRequest) {
+        log.info("User requested to add author: {}", authorCreateRequest);
         return authorService.addAuthor(authorCreateRequest);
     }
 
@@ -68,6 +74,7 @@ public record AuthorController (AuthorService authorService) {
     })
     @PutMapping("/{id}")
     public Author updateAuthor(@PathVariable int id, @Valid @RequestBody AuthorUpdateRequest authorUpdateRequest) {
+        log.info("User requested to update author with id: {}", id);
         return authorService.updateAuthor(id, authorUpdateRequest);
     }
 
@@ -82,18 +89,20 @@ public record AuthorController (AuthorService authorService) {
     })
     @DeleteMapping("/{id}")
     public void deleteAuthor(@PathVariable int id) {
+        log.info("User requested to delete author with id: {}", id);
         authorService.deleteAuthor(id);
     }
 
 
+    @Validated
     public record AuthorCreateRequest(
-            @NotBlank @NotNull String firstName,
-            @NotBlank @NotNull String lastName
+            @NotBlank @NotNull String name,
+            @NotBlank @NotNull String surname
     ) { }
 
     public record AuthorUpdateRequest(
-            String firstName,
-            String lastName
+            String name,
+            String surname
     ) { }
 
 }

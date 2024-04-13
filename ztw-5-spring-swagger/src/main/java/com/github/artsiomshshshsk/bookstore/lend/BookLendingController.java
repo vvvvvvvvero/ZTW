@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -72,8 +73,23 @@ public record BookLendingController(BookLendingService bookLendingService) {
         return bookLendingService.addLender(createBookLenderRequest);
     }
 
+    @Operation(
+            summary = "Get all book lenders",
+            description = "Get all book lenders from the bookstore"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved the list of book lenders"),
+    })
+    @GetMapping("/lender")
+    public List<Lender> getLenders() {
+        return bookLendingService.getLenders();
+    }
+
+    @Validated
     public record CreateBookLendingRequest(@NotNull Integer bookId, @NotNull Integer lenderId) { }
 
+
+    @Validated
     public record CreateBookLenderRequest(@NotNull @NotBlank String name,
                                           @NotNull @NotBlank String surname,
                                           @NotNull @NotBlank String email) { }
